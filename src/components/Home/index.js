@@ -103,13 +103,7 @@ class Home extends Component {
   decrement = id => {
     const {dishCount} = this.state
     const c = dishCount.find(item => item.id === id)
-    if (c.length === 0) {
-      const val = {id, quantity: 0}
-      this.setState(prevState => ({
-        dishCount: [...prevState.dishCount, val],
-        count: prevState.count - 1,
-      }))
-    } else if (c.quantity === 0) {
+    if (c === undefined || c.quantity === 0) {
       this.setState({dishCount})
     } else {
       const updatedCart = dishCount.map(item => {
